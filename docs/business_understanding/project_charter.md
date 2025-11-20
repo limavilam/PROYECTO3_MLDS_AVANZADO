@@ -51,10 +51,11 @@ El proyecto se desarrollará siguiendo la metodología CRISP-DM, las fases a imp
 
 
 ## Equipo del Proyecto
-
-- Iván Quevedo
-- Raúl Ramírez
-- Lina Ávila
+| Nombre | Cargo 
+|------|------------------
+| Iván Quevedo | Científico de datos
+| Lina Ávila   | Líder técnico - científica de datos 
+| Raúl Ramírez | Ingeniero de ML/MLOPS 
 
 ## Presupuesto
 
