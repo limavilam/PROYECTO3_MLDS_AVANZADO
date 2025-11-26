@@ -51,6 +51,7 @@ El proyecto se desarrollará siguiendo la metodología CRISP-DM, las fases a imp
 
 
 ## Equipo del Proyecto
+
 | Nombre | Cargo 
 |------|------------------
 | Iván Quevedo | Científico de datos
