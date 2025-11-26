@@ -2,37 +2,14 @@
 
 ## Base de datos 1
 
-**Agregar una descripción de la tabla o fuente de datos.
+**Descripción:**  
 
-| Variable | Descripción | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| --- | --- | --- | --- | --- |
-| variable_1 | Descripción de la variable 1 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_2 | Descripción de la variable 2 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_3 | Descripción de la variable 3 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_4 | Descripción de la variable 4 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_5 | Descripción de la variable 5 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
+Dataset de imágenes MRI para clasificación del Alzheimer, almacenado en archivos `.parquet`. 
+Cada registro contiene la etiqueta de la clase de Alzheimer y la imagen codificada en bytes.
 
-- **Variable**: nombre de la variable.
-- **Descripción**: breve descripción de la variable.
-- **Tipo de dato**: tipo de dato que contiene la variable.
-- **Rango/Valores posibles**: rango o valores que puede tomar la variable.
-- **Fuente de datos**: fuente de los datos de la variable.
+| Variable | Descripción                                        | Tipo de dato | Rango/Valores posibles                        | Fuente de datos |
+|----------|---------------------------------------------------|-------------|-----------------------------------------------|----------------|
+| label    | Código numérico de la clase de Alzheimer          | int64       | 0: Mild Demented, 1: Moderate Demented, 2: Non Demented, 3: Very Mild Demented | Kaggle - Alzheimer MRI Disease Classification Dataset |
+| image    | Imagen codificada en bytes dentro de un diccionario | object      | Diccionario con clave `"bytes"` que contiene la imagen | Kaggle - Alzheimer MRI Disease Classification Dataset |
 
-## Base de datos 2
-
-**Agregar una descripción de la tabla o fuente de datos.
-
-| Variable | Descripción | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| --- | --- | --- | --- | --- |
-| variable_1 | Descripción de la variable 1 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_2 | Descripción de la variable 2 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_3 | Descripción de la variable 3 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_4 | Descripción de la variable 4 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-| variable_5 | Descripción de la variable 5 | Tipo de dato | Rango/Valores posibles | Fuente de datos |
-
-- **Variable**: nombre de la variable.
-- **Descripción**: breve descripción de la variable.
-- **Tipo de dato**: tipo de dato que contiene la variable.
-- **Rango/Valores posibles**: rango o valores que puede tomar la variable.
-- **Fuente de datos**: fuente de los datos de la variable.
 
