@@ -152,6 +152,18 @@ Tras inspeccionar los datasets se obtuvo lo siguiente:
 
 ### Base de datos de destino
 
-- [ ] Especificar la base de datos de destino para los datos.
-- [ ] Especificar la estructura de la base de datos de destino.
-- [ ] Describir los procedimientos de carga y transformación de los datos en la base de datos de destino.
+- [x] Especificar la base de datos de destino para los datos.
+
+En nuestro caso optamos por no usar una base de datos, sino que en su lugar usamos un sistema de almacenamiento de objetos compatible con S3, implementado localmente mediante MinIO, esto dado que ya no tenemos pruebas gratuitas de nubes y queremos eliminar la posibilidad de cobros por uso de recursos en la nube. 
+
+Esta elección de un sistema de almacenamiento de objetos responde a la naturaleza de nuestro dataset, el cual está compuesto de dos archivos Parquet. Estos tipos de archivos no se benefician del modelo relacional ni de las características transaccionales de un motor SQL o NoSQL, por lo que resulta más adecuado almacenarlos en un repositorio de objetos optimizado para manejo eficiente de archivos grandes, acceso distribuido.
+
+![MinIO Bucket](MinIO.png)
+
+- [x] Especificar la estructura de la base de datos de destino.
+
+La estructura de este almacenamiento consiste en un bucket denominado mlds3, que actúa como contenedor lógico para los datos del proyecto. Dentro de este bucket se alojan los archivos train.parquet y test.parquet, que contienen tanto las imágenes codificadas en bytes como los metadatos necesarios para la etapa de entrenamiento y evaluación del modelo. El bucket funciona como un espacio jerárquico simple, en el que los objetos se identifican por su nombre y pueden organizarse mediante prefijos. También usaremos este bucket para almacenar el modelo ya entrenado y sus distintas versiones.
+
+- [x] Describir los procedimientos de carga y transformación de los datos en la base de datos de destino.
+
+El procedimiento de carga y transformación de los datos se basa en un flujo claro y reproducible. Inicialmente, los archivos Parquet se generan o preparan en el entorno local. Posteriormente, el cliente oficial de MinIO para Python se encarga de verificar la existencia del bucket y, de ser necesario, crearlo. Una vez disponible, los datos se cargan al almacenamiento mediante operaciones `fput_object`, que realizan la transferencia de los archivos locales al bucket de destino. Para acceder a los datos, el proceso inverso consiste en obtener los objetos almacenados a través de `get_object` y reconstruirlos en memoria utilizando `BytesIO` junto con las funciones de lectura de pandas. De esta manera, los datos pueden ser transformados, analizados o utilizados en nuestro modelo sin necesidad de una base de datos estructurada, dado que podemos cargar los datos del archivo parquet directamente en un dataframe de pandas y decodificar la información en bytes para obtener las imágenes.

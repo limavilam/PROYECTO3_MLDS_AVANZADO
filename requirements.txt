@@ -1,0 +1,9 @@
+minio
+pandas
+numpy
+opencv-python
+matplotlib
+seaborn
+scikit-learn
+pyarrow
+fastparquet
