@@ -125,7 +125,29 @@ El análisis se centró en `mean_pixel` como un indicador de las característica
 
 ## Ranking de variables
 
-TDO
+A partir de las estadísticas descriptivas calculadas por clase y de las visualizaciones realizadas, tenemos:
+
+| Label | Categoría            | n_imágenes | mean_pixel (media) | std(mean_pixel) |
+| :---: | :------------------- | ---------: | -----------------: | --------------: |
+| 0     | Mild Demented        |       724  | 0.261911           | 0.020898        |
+| 1     | Moderate Demented    |        49  | 0.270272           | 0.019699        |
+| 2     | Non Demented         |      2566  | 0.288351           | 0.025964        |
+| 3     | Very Mild Demented   |      1781  | 0.271775           | 0.027948        |
+
+Estos valores muestran que `mean_pixel` tiende a ser mayor en la clase **Non Demented** que en el resto de categorías, y que la dispersión de `mean_pixel` (su desviación estándar por grupo) es algo mayor en las clases `Non Demented` y `Very Mild Demented`. 
+<br/><br/>Esta evidencia cuantitativa es la base para asignar a `mean_pixel` el primer lugar en el ranking de variables, mientras que `std_pixel` se considera secundaria y complementaria.
+
+Se arma el siguiente ranking de importancia:
+
+1. **`mean_pixel` (media de intensidad de píxel)**  
+   - Muestra diferencias claras en sus medias entre las categorías de la variable objetivo (`label`), especialmente entre la clase `Non Demented` y el resto.  
+   - Está directamente relacionada con el "brillo" promedio de la imagen, lo que puede reflejar patrones estructurales globales en las MRI.  
+   - Es la variable con mayor capacidad observada para capturar variaciones entre clases de demencia en esta etapa exploratoria.
+
+2. **`std_pixel` (desviación estándar de intensidad de píxel)**  
+   - Resume el grado de variabilidad/contraste dentro de cada imagen.  
+   - Aporta información complementaria a `mean_pixel`, pero sus diferencias entre clases son menos marcadas y muestran un mayor solapamiento en los valores.  
+   - Su poder discriminativo parece menor que el de la media, aunque puede ayudar a capturar sutiles diferencias de textura.
 
 ## Relación entre variables explicativas y variable objetivo
 
