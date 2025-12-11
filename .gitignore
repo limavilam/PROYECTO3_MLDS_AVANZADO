@@ -3,3 +3,56 @@
 env_vars*
 credentials*
 **/build/*
+
+# ============================
+# 🔹 BACKEND (Python / FastAPI)
+# ============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+.env.*
+!.env.example
+
+# ============================
+# 🔹 FRONTEND (React / Vite)
+# Estructura: /frontend/*
+# ============================
+
+# Dependencias
+/frontend/node_modules/
+
+# Build output
+/frontend/dist/
+frontend/dist-ssr/
+
+# Logs
+/frontend/*.log
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Environment files
+/frontend/.env
+/frontend/.env.*
+!/frontend/.env.example
+
+# Editor configs
+/frontend/.vscode/
+/frontend/.idea/
+
+# OS-specific files
+/frontend/.DS_Store
+.DS_Store
+Thumbs.db
+
+/frontend/.cache/
+/frontend/vite-cache/
+/frontend/.eslintcache/
+
+/frontend/*.tsbuildinfo
+
+/frontend/.netlify/
