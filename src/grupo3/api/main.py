@@ -32,10 +32,10 @@ def download_model_from_blob():
     Descarga el modelo desde Azure Blob Storage solo si no existe localmente.
     """
     if os.path.exists(LOCAL_MODEL_PATH):
-        print("✔ Modelo ya existe localmente. No se descarga.")
+        print("Modelo ya existe localmente. No se descarga.")
         return
 
-    print("⏬ Descargando modelo desde Azure Blob Storage...")
+    print("Descargando modelo desde Azure Blob Storage")
 
     try:
         blob_service = BlobServiceClient.from_connection_string(AZURE_CONNECTION_STRING)
@@ -45,10 +45,10 @@ def download_model_from_blob():
         with open(LOCAL_MODEL_PATH, "wb") as f:
             f.write(blob_client.download_blob().readall())
 
-        print("✔ Modelo descargado exitosamente")
+        print("Modelo descargado exitosamente")
 
     except Exception as e:
-        print("❌ Error descargando el modelo:", str(e))
+        print("Error descargando el modelo:", str(e))
         raise e
 
 
