@@ -1,4 +1,4 @@
-numpy
+numpy==1.24.0
 pandas
 opencv-python
 matplotlib
@@ -11,4 +11,8 @@ h5py
 
 fastapi
 uvicorn
-tensorflow==2.14.0
+tensorflow==2.13.0
+azure-core
+azure-identity
+azure-storage-blob
+python-multipart

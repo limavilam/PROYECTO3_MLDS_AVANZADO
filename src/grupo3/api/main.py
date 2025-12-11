@@ -8,6 +8,10 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.vgg16 import preprocess_input
 from azure.storage.blob import BlobServiceClient
 
+import os
+os.environ["TF_NEED_TENSORRT"] = "0"
+
+
 app = FastAPI()
 
 # ---------------------------
@@ -82,6 +86,9 @@ def preprocess_mri_image(image_bytes):
 
     return np.expand_dims(img_3ch, axis=0)
 
+@app.get("/")
+async def root():
+    return {"message": "API de predicción de Alzheimer está en funcionamiento."}
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):

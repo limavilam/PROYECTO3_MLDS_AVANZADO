@@ -1,15 +1,18 @@
 # ---- Imagen base optimizada con TensorFlow ----
-FROM tensorflow/tensorflow:2.12.0
+FROM python:3.10-slim
 
 # ---- Crear carpeta de aplicación ----
 WORKDIR /app
 
 # ---- Instalar dependencias del sistema ----
+
 RUN apt-get update && apt-get install -y \
-    python3-opencv \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+ && rm -rf /var/lib/apt/lists/*
 
 # ---- Copiar dependencias Python ----
 COPY requirements.txt .
@@ -18,10 +21,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # ---- Copiar código fuente  ----
-COPY src/grupo3/api/main.py .
+COPY src/grupo3/api /app
 
 # ---- Exponer puerto de FastAPI ----
-EXPOSE 8000
+EXPOSE 8080
 
 # ---- Comando de arranque ----
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
