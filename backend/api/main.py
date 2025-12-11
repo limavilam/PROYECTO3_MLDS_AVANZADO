@@ -14,6 +14,21 @@ os.environ["TF_NEED_TENSORRT"] = "0"
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://alzheimer-front-app--kzkzmru.politebeach-446a1961.eastus.azurecontainerapps.io"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # ---------------------------
 # CONFIGURACIÓN BLOB STORAGE
 # ---------------------------
@@ -86,8 +101,8 @@ def preprocess_mri_image(image_bytes):
 
     return np.expand_dims(img_3ch, axis=0)
 
-@app.get("/")
-async def root():
+@app.get("/health")
+async def health_check():
     return {"message": "API de predicción de Alzheimer está en funcionamiento."}
 
 @app.post("/predict")

@@ -1,0 +1,26 @@
+@startuml
+actor Usuario as U
+participant "Frontend (React)\nContainer App A" as FE
+participant "Backend FastAPI\nContainer App B" as API
+participant "Azure Blob Storage" as BLOB
+participant "Modelo Local\n(Cargado desde Blob)" as MODEL
+
+U -> FE: Arrastra / selecciona imagen\n(cuadro Drag & Drop)
+FE -> FE: Mostrar vista previa de la imagen
+U -> FE: Clic en "Analizar"
+
+FE -> API: POST /predict\n(archivo imagen multipart/form-data)
+
+API -> API: Validación de archivo
+API -> BLOB: GET modelo (.h5)
+BLOB --> API: Modelo descargado
+API -> MODEL: Cargar modelo en memoria\n(PyTorch)
+
+API -> MODEL: Ejecutar inferencia
+MODEL --> API: Resultado (clase + probabilidad)
+
+API --> FE: Respuesta JSON\n{label: "...", confidence: 0.94}
+
+FE -> FE: Mostrar resultado al usuario\n"Predicción: Alzheimer Moderado"
+
+@enduml

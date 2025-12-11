@@ -1,0 +1,46 @@
+@startuml
+skinparam shadowing false
+skinparam rectangleStyle rounded
+
+rectangle "Desarrollo Local" as DEV {
+  component "Frontend React\n(código)" as FE_CODE
+  component "Backend FastAPI\n(código)" as API_CODE
+  component "Docker CLI\n(az acr build)" as DOCKER
+}
+
+cloud "Azure Container Registry (ACR)" as ACR
+
+rectangle "Azure Container Apps Environment" as ENV {
+  node "Frontend Container App" as FE_CA
+  node "Backend Container App" as API_CA
+}
+
+cloud "Azure Blob Storage" as BLOB
+
+actor Usuario as U
+
+' --- Flujo de despliegue ---
+
+DEV -> DOCKER: Construir imagen\naz acr build frontend \n\n
+DEV -> DOCKER: \n\n Construir imagen\naz acr build backend
+DOCKER -> ACR: Subir imágenes Docker
+
+ACR -> FE_CA: Container App pull\nimagen del frontend
+ACR -> API_CA: Container App pull\nimagen del backend
+
+' --- Flujo de usuario ---
+FE_CA -> FE_CA: Render React App \n 
+U -> FE_CA: Abre UI Web\n(https GET)
+
+U -> FE_CA: Sube imagen \n
+FE_CA -> API_CA: POST /predict\nimagen
+
+API_CA -> BLOB: Descargar modelo \n
+BLOB --> API_CA: Modelo .h5 \n\n
+
+API_CA -> API_CA: Inferencia Tensorflow \n
+API_CA --> FE_CA: JSON respuesta
+
+FE_CA -> U: Mostrar predicción resultado \n\n
+
+@enduml
