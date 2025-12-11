@@ -1,0 +1,9 @@
+numpy==1.26.4
+opencv-python==4.7.0.72
+tensorflow-macos==2.14.0
+tensorflow-metal==1.1.0
+fastapi
+uvicorn
+pillow
+h5py
+python-multipart

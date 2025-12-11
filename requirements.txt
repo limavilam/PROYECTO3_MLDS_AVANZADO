@@ -1,9 +1,14 @@
-minio
-pandas
 numpy
+pandas
 opencv-python
 matplotlib
 seaborn
 scikit-learn
 pyarrow
+pillow
 fastparquet
+h5py
+
+fastapi
+uvicorn
+tensorflow==2.14.0
