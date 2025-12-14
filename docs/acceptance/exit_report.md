@@ -170,3 +170,8 @@ El modelo desarrollado tiene el potencial de servir como herramienta de apoyo va
 El desarrollo y éxito de este proyecto fue el resultado del trabajo colaborativo y la dedicación de todo el equipo. Cada miembro aportó conocimientos y habilidades que fueron esenciales para superar los desafíos encontrados y alcanzar los objetivos establecidos.
 
 Agradecemos a la Universidad Nacional de Colombia, a los profesores Jorge Camargo, Felipe Restrepo, Fabio Gonzalez, Oscar Perdomo y Juan Malagón junto con al "Programa de Formación en Machine Learning y Data Science" por proporcionar las herramientas necesarias para el desarrollo de este proyecto.
+
+
+## Video
+
+https://www.youtube.com/watch?v=3QY7Xr2-FeY
